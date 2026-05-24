@@ -12,7 +12,6 @@ A collection of AI skills built with the [Anthropic Claude Agent SDK](https://do
 |-------|---------|-------------|---------|
 | [Meeting Prep & Action Item Triage](#meeting-prep--action-item-triage) | `/meeting-prep` | Pre-meeting brief from Slack/Jira/docs + post-meeting action item extraction from transcripts | [Install](#install-meeting-prep) |
 | [Executive Status Summarizer](#executive-status-summarizer) | `/exec-status` | Translates verbose engineering updates into 🟢/🟡/🔴 one-pagers for VPs and stakeholders | [Install](#install-executive-status-summarizer) |
-| [Google Slides Connector](#google-slides-connector) | `/gslides-connector` | MCP server setup + full Google Slides & Drive access natively inside Claude Code | [Install](#install-google-slides-connector) |
 | [Dependency & Risk Tracker](#dependency--risk-tracker) | `/dep-risk-tracker` | Critical path analysis, cross-team dependency mapping, RAID log & mitigation strategies across programs | [Install](#install-dependency--risk-tracker) |
 | [PRD Generator](#prd-generator) | `/prd-generator` | Turn validation research into a production-ready PRD with acceptance criteria, metrics & rollout plan | [Install](#install-prd-generator) |
 | [PMaaS](#pmaas--program-management-as-a-service) | `/pmaas` | End-to-end program status reporting across Jira, Smartsheet, Airtable, GitHub & Slack | [Install](#install-pmaas) |
@@ -120,61 +119,6 @@ mkdir -p ~/.claude/skills/exec-status
 curl -sSL https://raw.githubusercontent.com/goyalsandeep2k/claude-skills/main/skills/exec-status/SKILL.md \
   -o ~/.claude/skills/exec-status/SKILL.md
 ```
-
----
-
-## Google Slides Connector
-
-**The problem:** Google Slides presentations live outside Claude. Reading a 90-slide deck means opening it in a browser, copy-pasting content, losing formatting, and repeating for every deck. There's no native way for Claude to access your Drive.
-
-**The skill:** Google Slides Connector walks you through setting up a live MCP (Model Context Protocol) server — the standard protocol Claude uses to connect to external tools. Once configured, Claude can read any presentation you have access to, search your Drive, extract speaker notes, and synthesize across multiple decks, all from a single prompt.
-
-### What it enables
-
-- **Deck summaries** — exec brief or slide-by-slide notes in seconds
-- **Decision extraction** — pulls key decisions, open questions, and action items
-- **Cross-deck analysis** — compares multiple presentations, flags contradictions
-- **Drive search** — finds presentations by topic or keyword across your workspace
-- **Speaker notes extraction** — reads notes that aren't visible in slides view
-- **Summary exports** — generates Markdown or Word doc summaries
-
-### Setup paths
-
-| Setup | Best for |
-|-------|---------|
-| `gws` CLI (npm) | Quick setup, personal or Workspace accounts |
-| Python MCP server | Persistent server, teams, Claude Code integration |
-
-### Trigger phrases
-
-```
-"Connect Google Slides to Claude"
-"Set up the gslides MCP"
-"Summarize the deck at [URL]"
-"Read my presentation about [topic]"
-"Search my Drive for [topic] presentations"
-"Extract decisions from this deck: [URL]"
-```
-
----
-
-## Install Google Slides Connector
-
-### One-liner (recommended)
-
-```bash
-curl -sSL https://raw.githubusercontent.com/goyalsandeep2k/claude-skills/main/skills/gslides-connector/install.sh | bash
-```
-
-### Manual install
-
-```bash
-mkdir -p ~/.claude/skills/gslides-connector
-curl -sSL https://raw.githubusercontent.com/goyalsandeep2k/claude-skills/main/skills/gslides-connector/SKILL.md \
-  -o ~/.claude/skills/gslides-connector/SKILL.md
-```
-
-After installing, open Claude Code and say: `"Connect Google Slides"` — the skill walks you through the full MCP setup.
 
 ---
 
