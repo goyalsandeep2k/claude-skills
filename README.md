@@ -10,7 +10,43 @@ A collection of AI skills built with the [Anthropic Claude Agent SDK](https://do
 
 | Skill | Command | Description | Install |
 |-------|---------|-------------|---------|
+| [PRD Generator](#prd-generator) | `/prd-generator` | Turn validation research into a production-ready PRD with acceptance criteria, metrics & rollout plan | [Install](#install-prd-generator) |
 | [PMaaS](#pmaas--program-management-as-a-service) | `/pmaas` | End-to-end program status reporting across Jira, Smartsheet, Airtable, GitHub & Slack | [Install](#install-pmaas) |
+
+---
+
+## PRD Generator
+
+**The problem:** You've done the discovery. You have interview notes, survey results, maybe a Loom or a rough brief — but turning that into a structured PRD that engineering can actually act on takes hours and always feels like you're reinventing the same template.
+
+**The skill:** PRD Generator takes whatever you have — research notes, a rough idea, even just a few bullet points — and produces a complete, engineering-ready PRD: problem statement, user stories, functional requirements with Given/When/Then acceptance criteria, SMART success metrics, phased rollout plan, and a risk/dependency table.
+
+### What it produces
+
+- **Executive Summary** — 30-second context for any stakeholder
+- **Problem Statement** — user + business problem, evidence, before/after picture
+- **Goals & Non-Goals** — what's in and explicitly out of scope
+- **User Personas & Use Cases** — personas + user stories in standard format
+- **Functional Requirements** — P0/P1/P2 priority, description, and testable acceptance criteria (Given/When/Then)
+- **Non-Functional Requirements** — performance, accessibility, security, uptime
+- **Success Metrics** — primary KPI, secondary indicators, guardrail metrics in a measurement table
+- **Phased Roll-Out Plan** — Alpha → Closed Beta → Controlled Ramp → GA with exit criteria
+- **Dependencies & Risks** — table with owner, impact, and mitigation
+- **Open Questions** — numbered, with owner and due date
+- **Export** — Markdown file or Word (.docx)
+
+### Trigger phrases
+
+```
+"Write a PRD for [feature]"
+"Turn my validation research into a PRD"
+"Generate product requirements for [idea]"
+"Help me write acceptance criteria for [feature]"
+"Create a product spec for engineering handoff"
+"I have user research — help me structure a PRD"
+```
+
+Or directly: `/prd-generator`
 
 ---
 
@@ -59,6 +95,24 @@ Or directly: `/pmaas`
 | **GitHub** | Open PRs, stale branches, CI status, recent commits |
 | **Slack** | Risk signals, decisions made, blockers mentioned |
 | **Confluence / Google Docs** | PRDs, specs, decision logs |
+
+---
+
+## Install PRD Generator
+
+### One-liner (recommended)
+
+```bash
+curl -sSL https://raw.githubusercontent.com/goyalsandeep2k/claude-skills/main/skills/prd-generator/install.sh | bash
+```
+
+### Manual install
+
+```bash
+mkdir -p ~/.claude/skills/prd-generator
+curl -sSL https://raw.githubusercontent.com/goyalsandeep2k/claude-skills/main/skills/prd-generator/SKILL.md \
+  -o ~/.claude/skills/prd-generator/SKILL.md
+```
 
 ---
 
