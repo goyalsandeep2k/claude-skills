@@ -217,8 +217,8 @@
 <main>
 
   <div class="stats">
-    <div class="stat"><div class="num">6</div><div class="label">Skills Built</div></div>
-    <div class="stat"><div class="num">6</div><div class="label">Live in Production</div></div>
+    <div class="stat"><div class="num">7</div><div class="label">Skills Built</div></div>
+    <div class="stat"><div class="num">7</div><div class="label">Live in Production</div></div>
     <div class="stat"><div class="num">6</div><div class="label">Integrations</div></div>
     <div class="stat"><div class="num">∞</div><div class="label">Hours Saved</div></div>
   </div>
@@ -339,6 +339,39 @@
         <div class="install-cmd">
           <code id="pmaas-cmd">curl -sSL https://raw.githubusercontent.com/goyalsandeep2k/claude-skills/main/skills/pmaas/install.sh | bash</code>
           <button class="copy-btn" onclick="copyCmd('pmaas-cmd', this)">Copy</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Google Slides Connector — PUBLIC -->
+    <div class="card card-featured">
+      <div class="card-header">
+        <div class="card-icon" style="background: rgba(210,153,255,0.15);">📑</div>
+        <div class="card-title-area">
+          <h2>Google Slides Connector</h2>
+          <div class="skill-id">/gslides-connector &nbsp;·&nbsp; MCP Server for Google Slides</div>
+        </div>
+        <span class="status-badge status-public">Public</span>
+      </div>
+      <p>
+        Sets up a live MCP (Model Context Protocol) server so Claude can read, analyze,
+        and work with Google Slides and Drive natively. Walks through OAuth2 setup,
+        registers the MCP in Claude Code, then unlocks deck summarization, decision
+        extraction, Drive search, and cross-deck analysis — all in natural language.
+      </p>
+      <div class="card-footer">
+        <div class="tags">
+          <span class="tag">MCP Server</span>
+          <span class="tag">Google Slides</span>
+          <span class="tag">Google Drive</span>
+          <span class="tag">OAuth2</span>
+        </div>
+      </div>
+      <div class="install-block">
+        <div class="install-label">⚡ Install (one-liner)</div>
+        <div class="install-cmd">
+          <code id="gslides-cmd">curl -sSL https://raw.githubusercontent.com/goyalsandeep2k/claude-skills/main/skills/gslides-connector/install.sh | bash</code>
+          <button class="copy-btn" onclick="copyCmd('gslides-cmd', this)">Copy</button>
         </div>
       </div>
     </div>
