@@ -10,10 +10,116 @@ A collection of AI skills built with the [Anthropic Claude Agent SDK](https://do
 
 | Skill | Command | Description | Install |
 |-------|---------|-------------|---------|
+| [Meeting Prep & Action Item Triage](#meeting-prep--action-item-triage) | `/meeting-prep` | Pre-meeting brief from Slack/Jira/docs + post-meeting action item extraction from transcripts | [Install](#install-meeting-prep) |
+| [Executive Status Summarizer](#executive-status-summarizer) | `/exec-status` | Translates verbose engineering updates into 🟢/🟡/🔴 one-pagers for VPs and stakeholders | [Install](#install-executive-status-summarizer) |
 | [Google Slides Connector](#google-slides-connector) | `/gslides-connector` | MCP server setup + full Google Slides & Drive access natively inside Claude Code | [Install](#install-google-slides-connector) |
 | [Dependency & Risk Tracker](#dependency--risk-tracker) | `/dep-risk-tracker` | Critical path analysis, cross-team dependency mapping, RAID log & mitigation strategies across programs | [Install](#install-dependency--risk-tracker) |
 | [PRD Generator](#prd-generator) | `/prd-generator` | Turn validation research into a production-ready PRD with acceptance criteria, metrics & rollout plan | [Install](#install-prd-generator) |
 | [PMaaS](#pmaas--program-management-as-a-service) | `/pmaas` | End-to-end program status reporting across Jira, Smartsheet, Airtable, GitHub & Slack | [Install](#install-pmaas) |
+
+---
+
+## Meeting Prep & Action Item Triage
+
+**The problem:** You walk into meetings underprepared because context is scattered across Slack, Jira, and 5 Google Docs. You walk out of meetings with fuzzy notes that turn into dropped balls 48 hours later.
+
+**The skill:** Meeting Prep works in two modes. Before a meeting it reads your connected tools and produces a targeted 3-minute brief — key points to make, attendee intel, decisions needed, and a suggested opening line. After a meeting it parses the transcript and outputs a structured action item table with specific tasks, named owners, deadlines, and priority — nothing left as "the team will follow up."
+
+### What it produces
+
+**Pre-meeting brief:**
+- Your goal for the meeting in one line
+- 60-second context summary
+- Who's in the room and what they care about
+- Key points to make (with supporting data)
+- Decisions needed and who owns them
+- Watch-outs and how to handle them
+- Suggested opening line
+
+**Post-meeting summary:**
+- Decisions made (with who agreed)
+- Action item table: task · owner · due date · priority
+- Open questions with owners and deadlines
+- Parking lot items for future meetings
+
+### Trigger phrases
+
+```
+"Prep me for my meeting with [person/team]"
+"I have a sync in 30 minutes about [topic] — brief me"
+"Extract action items from this transcript: [paste]"
+"Here are my meeting notes — turn them into tasks"
+"What came out of that meeting?"
+```
+
+---
+
+## Install Meeting Prep
+
+### One-liner
+```bash
+curl -sSL https://raw.githubusercontent.com/goyalsandeep2k/claude-skills/main/skills/meeting-prep/install.sh | bash
+```
+
+### Manual
+```bash
+mkdir -p ~/.claude/skills/meeting-prep
+curl -sSL https://raw.githubusercontent.com/goyalsandeep2k/claude-skills/main/skills/meeting-prep/SKILL.md \
+  -o ~/.claude/skills/meeting-prep/SKILL.md
+```
+
+---
+
+## Executive Status Summarizer
+
+**The problem:** Engineering standups are written for engineers. Your VP has 90 seconds and needs to know: are we on track, what's the risk, and what do they need to decide? Translating between these two worlds manually every week is a tax on every TPM and EM.
+
+**The skill:** Exec Status Summarizer takes whatever raw content you have — standup notes, Jira export, sprint report, Slack thread — and produces a clean 🟢/🟡/🔴 one-pager. It cuts the jargon, calls the status honestly, surfaces the real risks, and always ends with a crisp "decisions needed from leadership" section. Output in text, email, Slack, or Word.
+
+### What it produces
+
+- **Overall health signal** — 🟢 On Track / 🟡 At Risk / 🔴 Needs Attention
+- **One-line summary** — the single most important thing leadership needs to know
+- **This week / Next week** — accomplishments and upcoming milestones as business outcomes
+- **Key metrics table** — with target vs. actual and per-metric status
+- **Top risks** — honest, named, with mitigation owner
+- **Decisions needed** — specific asks with "impact if delayed" for each
+- **Output formats** — ready-to-send email, Slack message, HTML one-pager, or Word doc
+
+### Translation examples
+
+| Engineering writes | Exec summary says |
+|---|---|
+| "Refactoring the auth service" | "Improving login reliability" |
+| "PRs stacking up due to review bandwidth" | "Code review is a bottleneck — being addressed" |
+| "Blocked on API contract" | "Launch depends on [Team X] — not yet confirmed" |
+| "Velocity dropped this sprint" | "Team shipped 30% less than planned this week" |
+
+### Trigger phrases
+
+```
+"Translate this for my VP: [paste notes]"
+"Make this exec-ready: [paste sprint update]"
+"Write my weekly status report"
+"Red yellow green summary for leadership"
+"Summarize this standup for stakeholders"
+```
+
+---
+
+## Install Executive Status Summarizer
+
+### One-liner
+```bash
+curl -sSL https://raw.githubusercontent.com/goyalsandeep2k/claude-skills/main/skills/exec-status/install.sh | bash
+```
+
+### Manual
+```bash
+mkdir -p ~/.claude/skills/exec-status
+curl -sSL https://raw.githubusercontent.com/goyalsandeep2k/claude-skills/main/skills/exec-status/SKILL.md \
+  -o ~/.claude/skills/exec-status/SKILL.md
+```
 
 ---
 

@@ -217,8 +217,8 @@
 <main>
 
   <div class="stats">
-    <div class="stat"><div class="num">7</div><div class="label">Skills Built</div></div>
-    <div class="stat"><div class="num">7</div><div class="label">Live in Production</div></div>
+    <div class="stat"><div class="num">9</div><div class="label">Skills Built</div></div>
+    <div class="stat"><div class="num">9</div><div class="label">Live in Production</div></div>
     <div class="stat"><div class="num">6</div><div class="label">Integrations</div></div>
     <div class="stat"><div class="num">∞</div><div class="label">Hours Saved</div></div>
   </div>
@@ -242,6 +242,68 @@
   <div class="section-title">Skills — Open Source &amp; Installable</div>
 
   <div class="skills-grid">
+
+    <!-- Meeting Prep — PUBLIC -->
+    <div class="card card-featured">
+      <div class="card-header">
+        <div class="card-icon" style="background: rgba(99,102,241,0.15);">📅</div>
+        <div class="card-title-area">
+          <h2>Meeting Prep &amp; Action Item Triage</h2>
+          <div class="skill-id">/meeting-prep &nbsp;·&nbsp; Pre &amp; Post Meeting Intelligence</div>
+        </div>
+        <span class="status-badge status-public">Public</span>
+      </div>
+      <p>
+        Works in two modes: before a meeting it pulls context from Slack, Jira, and docs to
+        produce a targeted 3-minute brief with key points, attendee intel, and a suggested
+        opening. After a meeting it parses transcripts into owner-assigned, time-bound action
+        items — nothing falls through the cracks.
+      </p>
+      <div class="card-footer">
+        <div class="tags">
+          <span class="tag">Transcripts</span><span class="tag">Action Items</span>
+          <span class="tag">Jira</span><span class="tag">Slack</span>
+        </div>
+      </div>
+      <div class="install-block">
+        <div class="install-label">⚡ Install (one-liner)</div>
+        <div class="install-cmd">
+          <code id="mp-cmd">curl -sSL https://raw.githubusercontent.com/goyalsandeep2k/claude-skills/main/skills/meeting-prep/install.sh | bash</code>
+          <button class="copy-btn" onclick="copyCmd('mp-cmd', this)">Copy</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Exec Status — PUBLIC -->
+    <div class="card card-featured">
+      <div class="card-header">
+        <div class="card-icon" style="background: rgba(16,185,129,0.15);">📊</div>
+        <div class="card-title-area">
+          <h2>Executive Status Summarizer</h2>
+          <div class="skill-id">/exec-status &nbsp;·&nbsp; Technical → Exec Translation</div>
+        </div>
+        <span class="status-badge status-public">Public</span>
+      </div>
+      <p>
+        Paste in verbose standup notes, Jira exports, or sprint reports and get back a clean
+        🟢/🟡/🔴 one-pager for VPs and stakeholders. Cuts jargon, surfaces the real risks,
+        calls out decisions needed from leadership, and outputs ready-to-send email, Slack,
+        or Word formats.
+      </p>
+      <div class="card-footer">
+        <div class="tags">
+          <span class="tag">Status Reports</span><span class="tag">Leadership</span>
+          <span class="tag">RYG</span><span class="tag">Jira</span>
+        </div>
+      </div>
+      <div class="install-block">
+        <div class="install-label">⚡ Install (one-liner)</div>
+        <div class="install-cmd">
+          <code id="es-cmd">curl -sSL https://raw.githubusercontent.com/goyalsandeep2k/claude-skills/main/skills/exec-status/install.sh | bash</code>
+          <button class="copy-btn" onclick="copyCmd('es-cmd', this)">Copy</button>
+        </div>
+      </div>
+    </div>
 
     <!-- Dep & Risk Tracker — PUBLIC -->
     <div class="card card-featured">
