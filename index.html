@@ -11,6 +11,7 @@
       --border: #30363d;
       --accent: #58a6ff;
       --accent2: #3fb950;
+      --warn: #f0a742;
       --text: #e6edf3;
       --muted: #8b949e;
       --tag-bg: #1f2937;
@@ -74,16 +75,12 @@
       border-radius: 8px;
       padding: 20px 24px;
       transition: border-color 0.15s, transform 0.1s;
-      cursor: default;
     }
-    .card:hover {
-      border-color: var(--accent);
-      transform: translateY(-1px);
-    }
+    .card:hover { border-color: var(--accent); transform: translateY(-1px); }
+    .card.card-featured { border-color: rgba(88,166,255,0.4); }
     .card-header {
       display: flex; align-items: flex-start;
-      justify-content: space-between; gap: 12px;
-      margin-bottom: 10px;
+      gap: 12px; margin-bottom: 10px;
     }
     .card-icon {
       width: 36px; height: 36px; border-radius: 8px;
@@ -118,6 +115,46 @@
     }
     .status-live { background: rgba(63,185,80,0.15); color: var(--accent2); border: 1px solid rgba(63,185,80,0.3); }
     .status-beta { background: rgba(88,166,255,0.15); color: var(--accent); border: 1px solid rgba(88,166,255,0.3); }
+    .status-public { background: rgba(240,167,66,0.15); color: var(--warn); border: 1px solid rgba(240,167,66,0.3); }
+
+    /* INSTALL BLOCK inside card */
+    .install-block {
+      margin-top: 14px;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 12px 14px;
+    }
+    .install-label {
+      font-size: 11px; font-weight: 600;
+      color: var(--muted); text-transform: uppercase;
+      letter-spacing: 0.6px; margin-bottom: 8px;
+    }
+    .install-cmd {
+      display: flex; align-items: center; gap: 8px;
+    }
+    .install-cmd code {
+      flex: 1;
+      font-family: 'SFMono-Regular', Consolas, monospace;
+      font-size: 11.5px;
+      color: var(--accent2);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .copy-btn {
+      flex-shrink: 0;
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      border-radius: 5px;
+      padding: 3px 10px;
+      font-size: 11px;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .copy-btn:hover { background: rgba(88,166,255,0.15); color: var(--accent); border-color: var(--accent); }
+    .copy-btn.copied { color: var(--accent2); border-color: var(--accent2); }
 
     /* WHAT ARE SKILLS */
     .explainer {
@@ -128,7 +165,8 @@
       margin-bottom: 40px;
     }
     .explainer h3 { font-size: 15px; font-weight: 600; margin-bottom: 10px; color: var(--text); }
-    .explainer p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+    .explainer p { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 8px; }
+    .explainer p:last-child { margin-bottom: 0; }
     .explainer code {
       background: rgba(255,255,255,0.06);
       border-radius: 4px; padding: 1px 6px;
@@ -137,9 +175,7 @@
     }
 
     /* STATS ROW */
-    .stats {
-      display: flex; gap: 16px; margin-bottom: 32px; flex-wrap: wrap;
-    }
+    .stats { display: flex; gap: 16px; margin-bottom: 32px; flex-wrap: wrap; }
     .stat {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -161,6 +197,7 @@
     @media (max-width: 640px) {
       .skills-grid { grid-template-columns: 1fr; }
       header { padding: 32px 20px; }
+      .install-cmd code { font-size: 10px; }
     }
   </style>
 </head>
@@ -169,20 +206,20 @@
 <header>
   <div class="avatar">SG</div>
   <h1>Sandeep's Claude Skills</h1>
-  <p>A collection of AI skills built with the Anthropic Claude Agent SDK</p>
+  <p>AI skills built with the Anthropic Claude Agent SDK — download and run in Claude Code</p>
   <div class="header-meta">
-    <span>👤 <a href="https://github.com/goyalsandeep2k">goyalsandeep2k</a></span>
-    <span>🏢 Intuit — Manager 3, TPM</span>
-    <span>📅 Last updated March 2026</span>
+    <span>👤 <a href="https://goyalsandeep2k.github.io">goyalsandeep2k.github.io</a></span>
+    <span>🏢 Intuit — Head of TPM</span>
+    <span>📅 Updated May 2026</span>
   </div>
 </header>
 
 <main>
 
   <div class="stats">
-    <div class="stat"><div class="num">3</div><div class="label">Skills Built</div></div>
-    <div class="stat"><div class="num">3</div><div class="label">Live in Production</div></div>
-    <div class="stat"><div class="num">4</div><div class="label">Integrations</div></div>
+    <div class="stat"><div class="num">4</div><div class="label">Skills Built</div></div>
+    <div class="stat"><div class="num">4</div><div class="label">Live in Production</div></div>
+    <div class="stat"><div class="num">6</div><div class="label">Integrations</div></div>
     <div class="stat"><div class="num">∞</div><div class="label">Hours Saved</div></div>
   </div>
 
@@ -192,14 +229,52 @@
       Skills are specialized AI agents built on the <strong>Anthropic Claude Agent SDK</strong>.
       Each skill is a self-contained <code>SKILL.md</code> file that gives Claude a specific identity,
       toolset, and knowledge base — turning it from a general assistant into a domain expert.
-      Skills are invoked via slash commands (e.g. <code>/aio-mastermind</code>) or natural language triggers
-      and can connect to live data sources like Slack, Smartsheets, and Google Drive.
+      Skills are invoked via slash commands (e.g. <code>/pmaas</code>) or natural language triggers
+      and can connect to live tools like Jira, Slack, Smartsheet, GitHub, and Google Drive.
+    </p>
+    <p>
+      <strong>To install:</strong> copy a skill's <code>SKILL.md</code> into <code>~/.claude/skills/&lt;skill-name&gt;/</code> —
+      or run the one-liner install command on any skill card below.
+      Requires <a href="https://claude.ai/download" target="_blank">Claude Code</a>.
     </p>
   </div>
 
-  <div class="section-title">Skills</div>
+  <div class="section-title">Skills — Open Source &amp; Installable</div>
 
   <div class="skills-grid">
+
+    <!-- PMaaS — FEATURED / PUBLIC -->
+    <div class="card card-featured">
+      <div class="card-header">
+        <div class="card-icon" style="background: rgba(240,167,66,0.15);">🚀</div>
+        <div class="card-title-area">
+          <h2>PMaaS</h2>
+          <div class="skill-id">/pmaas &nbsp;·&nbsp; Program Management as a Service</div>
+        </div>
+        <span class="status-badge status-public">Public</span>
+      </div>
+      <p>
+        Connects to Jira, Smartsheet, Airtable, GitHub, and Slack — then generates a polished
+        HTML status report with risks, milestones, project tracking, and meeting prep.
+        One command turns your scattered program data into a shareable command center.
+      </p>
+      <div class="card-footer">
+        <div class="tags">
+          <span class="tag">Jira</span>
+          <span class="tag">Smartsheet</span>
+          <span class="tag">Airtable</span>
+          <span class="tag">GitHub</span>
+          <span class="tag">Slack</span>
+        </div>
+      </div>
+      <div class="install-block">
+        <div class="install-label">⚡ Install (one-liner)</div>
+        <div class="install-cmd">
+          <code id="pmaas-cmd">curl -sSL https://raw.githubusercontent.com/goyalsandeep2k/claude-skills/main/skills/pmaas/install.sh | bash</code>
+          <button class="copy-btn" onclick="copyCmd('pmaas-cmd', this)">Copy</button>
+        </div>
+      </div>
+    </div>
 
     <!-- AiO Mastermind -->
     <div class="card">
@@ -209,11 +284,12 @@
           <h2>AiO Mastermind</h2>
           <div class="skill-id">aio-mastermind</div>
         </div>
+        <span class="status-badge status-live">Internal</span>
       </div>
       <p>
         Expert knowledge system for the <strong>AiO (All-in-One)</strong> program at Intuit.
         Answers questions about scope, status, milestones, team, decisions, risks, and workstreams
-        for the May & July 2026 Supernova releases. Pulls live data from Slack and Smartsheets
+        for the May &amp; July 2026 Supernova releases. Pulls live data from Slack and Smartsheets
         on every query to stay current.
       </p>
       <div class="card-footer">
@@ -235,6 +311,7 @@
           <h2>Agentic EA</h2>
           <div class="skill-id">sandeeps-agentic-ea</div>
         </div>
+        <span class="status-badge status-live">Internal</span>
       </div>
       <p>
         A personal AI Executive Assistant that monitors Slack, triages messages and DMs,
@@ -261,12 +338,12 @@
           <h2>IAS Context</h2>
           <div class="skill-id">ias-context</div>
         </div>
+        <span class="status-badge status-live">Internal</span>
       </div>
       <p>
         Live knowledge base for the <strong>Intuit Accountant Suite (IAS) / VEP Externalization</strong>
-        program. Covers WFM Capacity Planning, May Beta launch (May 13, 2026), open vs. closed beta
-        decisions, RAID log, program health, and team structure. Sources from Slack, Google Drive,
-        and Smartsheets.
+        program. Covers WFM Capacity Planning, May Beta launch, open vs. closed beta decisions,
+        RAID log, program health, and team structure. Sources from Slack, Google Drive, and Smartsheets.
       </p>
       <div class="card-footer">
         <div class="tags">
@@ -279,54 +356,49 @@
       </div>
     </div>
 
-    <!-- GSlides MCP -->
-    <div class="card">
-      <div class="card-header">
-        <div class="card-icon" style="background: rgba(248,113,113,0.15);">📑</div>
-        <div class="card-title-area">
-          <h2>GSlides MCP Server</h2>
-          <div class="skill-id">gslides-mcp</div>
-        </div>
-      </div>
-      <p>
-        A custom <strong>Model Context Protocol (MCP)</strong> server that gives Claude
-        read access to Google Slides presentations and Google Sheets spreadsheets.
-        Enables skills like AiO Mastermind and IAS Context to pull live data from
-        Intuit's Google Workspace documents directly into answers.
-      </p>
-      <div class="card-footer">
-        <div class="tags">
-          <span class="tag">MCP</span>
-          <span class="tag">Google Slides</span>
-          <span class="tag">Google Sheets</span>
-          <span class="tag">OAuth2</span>
-        </div>
-        <span class="status-badge status-live">Live</span>
-      </div>
-    </div>
-
   </div>
 
   <div class="section-title">How It Works</div>
-  <div class="explainer" style="margin-bottom: 0;">
+  <div class="explainer">
     <h3>Architecture</h3>
     <p>
       Each skill is a <code>SKILL.md</code> file with a YAML frontmatter block defining its
       <code>name</code>, <code>description</code>, and trigger conditions. When invoked, Claude reads
       the skill file and adopts the defined persona and toolset. Skills access live data through
       MCP (Model Context Protocol) servers — custom integrations for Slack, Smartsheet, Google Drive,
-      Outlook, and more. The GSlides MCP server is a custom Node.js server built to extend
-      Claude's reach into Google Workspace.
+      Outlook, Jira, GitHub, and more.
     </p>
+    <h3 style="margin-top:16px">Install any skill in 30 seconds</h3>
+    <p>
+      Skills live in <code>~/.claude/skills/</code>. To install PMaaS manually:
+    </p>
+    <p>
+      <code>mkdir -p ~/.claude/skills/pmaas</code><br>
+      <code>curl -sSL https://raw.githubusercontent.com/goyalsandeep2k/claude-skills/main/skills/pmaas/SKILL.md -o ~/.claude/skills/pmaas/SKILL.md</code>
+    </p>
+    <p>Then open Claude Code and say: <code>"Set up PMaaS for my program"</code></p>
   </div>
 
 </main>
 
 <footer>
-  Built by <a href="https://github.com/goyalsandeep2k">Sandeep Goyal</a> using the
-  <a href="https://www.anthropic.com">Anthropic Claude Agent SDK</a> &nbsp;·&nbsp;
-  Intuit TPM &nbsp;·&nbsp; March 2026
+  Built by <a href="https://goyalsandeep2k.github.io">Sandeep Goyal</a> using the
+  <a href="https://www.anthropic.com" target="_blank">Anthropic Claude Agent SDK</a>
+  &nbsp;·&nbsp;
+  <a href="https://github.com/goyalsandeep2k/claude-skills" target="_blank">GitHub</a>
+  &nbsp;·&nbsp; May 2026
 </footer>
+
+<script>
+function copyCmd(id, btn) {
+  const text = document.getElementById(id).textContent.trim();
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+</script>
 
 </body>
 </html>
