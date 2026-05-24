@@ -10,8 +10,71 @@ A collection of AI skills built with the [Anthropic Claude Agent SDK](https://do
 
 | Skill | Command | Description | Install |
 |-------|---------|-------------|---------|
+| [Dependency & Risk Tracker](#dependency--risk-tracker) | `/dep-risk-tracker` | Critical path analysis, cross-team dependency mapping, RAID log & mitigation strategies across programs | [Install](#install-dependency--risk-tracker) |
 | [PRD Generator](#prd-generator) | `/prd-generator` | Turn validation research into a production-ready PRD with acceptance criteria, metrics & rollout plan | [Install](#install-prd-generator) |
 | [PMaaS](#pmaas--program-management-as-a-service) | `/pmaas` | End-to-end program status reporting across Jira, Smartsheet, Airtable, GitHub & Slack | [Install](#install-pmaas) |
+
+---
+
+## Dependency & Risk Tracker
+
+**The problem:** Risks live in Jira comments. Dependencies live in someone's head. The critical path lives in a spreadsheet nobody updates. By the time a blocker surfaces in a standup, it's already a crisis.
+
+**The skill:** Dep & Risk Tracker pulls data from all your tools, maps what every team depends on from every other team, identifies which items are truly on the critical path, and generates specific mitigation strategies — not "monitor closely" — with named owners and deadlines. Then it puts everything in a filterable RAID dashboard you can share with leadership or update weekly.
+
+### What it produces
+
+- **Risk Summary** — all risks scored by Impact × Likelihood → P0/P1/P2/P3
+- **Critical Path flags** — only the items where a slip = launch slip
+- **Dependency Map** — cross-program matrix showing Confirmed / Unconfirmed / Blocked by team
+- **Full RAID Log** — Risks, Assumptions, Issues, Dependencies — each with owner, due date, mitigation, and contingency
+- **This Week's Actions** — P0 + P1 items formatted as a checkbox action list
+- **Escalation Tracker** — items that need leadership decision, with escalation path
+- **HTML Dashboard** — filterable by program and priority; self-contained file for Slack or email
+- **Recurring updates** — tell it "close R-03" or "add new program" and it updates the tracker
+
+### Trigger phrases
+
+```
+"Track risks across my programs"
+"Build a RAID log for [program name]"
+"Show me all cross-team dependencies"
+"What is on the critical path for [launch]?"
+"Flag everything that could delay the Q3 release"
+"Generate a mitigation plan for my blockers"
+"Who is blocking who across my workstreams?"
+```
+
+Or directly: `/dep-risk-tracker`
+
+### Connected tools
+
+| Tool | What it pulls |
+|------|--------------|
+| **Jira** | Blocked tickets, epic status, sprint velocity |
+| **Smartsheet** | Milestone dates, task owners, % complete |
+| **Airtable** | Roadmap dependencies, RAID items |
+| **GitHub** | Open PRs, stale branches, CI failures |
+| **Slack** | Blocker signals: "blocked", "waiting on", "pushed", "delayed" |
+| **Confluence / Google Docs** | Open decisions, assumption logs, prior RAIDs |
+
+---
+
+## Install Dependency & Risk Tracker
+
+### One-liner (recommended)
+
+```bash
+curl -sSL https://raw.githubusercontent.com/goyalsandeep2k/claude-skills/main/skills/dep-risk-tracker/install.sh | bash
+```
+
+### Manual install
+
+```bash
+mkdir -p ~/.claude/skills/dep-risk-tracker
+curl -sSL https://raw.githubusercontent.com/goyalsandeep2k/claude-skills/main/skills/dep-risk-tracker/SKILL.md \
+  -o ~/.claude/skills/dep-risk-tracker/SKILL.md
+```
 
 ---
 

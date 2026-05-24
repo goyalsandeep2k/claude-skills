@@ -217,8 +217,8 @@
 <main>
 
   <div class="stats">
-    <div class="stat"><div class="num">5</div><div class="label">Skills Built</div></div>
-    <div class="stat"><div class="num">5</div><div class="label">Live in Production</div></div>
+    <div class="stat"><div class="num">6</div><div class="label">Skills Built</div></div>
+    <div class="stat"><div class="num">6</div><div class="label">Live in Production</div></div>
     <div class="stat"><div class="num">6</div><div class="label">Integrations</div></div>
     <div class="stat"><div class="num">∞</div><div class="label">Hours Saved</div></div>
   </div>
@@ -242,6 +242,40 @@
   <div class="section-title">Skills — Open Source &amp; Installable</div>
 
   <div class="skills-grid">
+
+    <!-- Dep & Risk Tracker — PUBLIC -->
+    <div class="card card-featured">
+      <div class="card-header">
+        <div class="card-icon" style="background: rgba(239,68,68,0.15);">🔍</div>
+        <div class="card-title-area">
+          <h2>Dependency &amp; Risk Tracker</h2>
+          <div class="skill-id">/dep-risk-tracker &nbsp;·&nbsp; Cross-Program RAID Log</div>
+        </div>
+        <span class="status-badge status-public">Public</span>
+      </div>
+      <p>
+        Analyzes timelines across one or more programs, flags critical path items, maps
+        cross-team dependencies, and generates a proactive mitigation strategy for every
+        blocker. Produces a live RAID log and filterable HTML dashboard — centrally track
+        risks, assumptions, issues, and dependencies across all your programs.
+      </p>
+      <div class="card-footer">
+        <div class="tags">
+          <span class="tag">RAID Log</span>
+          <span class="tag">Critical Path</span>
+          <span class="tag">Jira</span>
+          <span class="tag">Slack</span>
+          <span class="tag">Mitigation</span>
+        </div>
+      </div>
+      <div class="install-block">
+        <div class="install-label">⚡ Install (one-liner)</div>
+        <div class="install-cmd">
+          <code id="drt-cmd">curl -sSL https://raw.githubusercontent.com/goyalsandeep2k/claude-skills/main/skills/dep-risk-tracker/install.sh | bash</code>
+          <button class="copy-btn" onclick="copyCmd('drt-cmd', this)">Copy</button>
+        </div>
+      </div>
+    </div>
 
     <!-- PRD Generator — PUBLIC -->
     <div class="card card-featured">
